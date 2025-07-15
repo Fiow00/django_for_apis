@@ -31,16 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'books',
-    'apis',
-    'todos',
-    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'books',
+    'apis',
+    'todos',
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -54,18 +56,19 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = (
-    "http://localhost:3000",
-    "http://localhost:8000",
-)
-
-CSRF_TRUSTED_ORIGINS = ["localhost:3000"]
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ]
 }
+
+CORS_ALLOWED_ORIGINS = (
+    "http://localhost:3000",
+    "hppt://localhost:8000",
+)
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
 
 ROOT_URLCONF = 'django_for_apis.urls'
 
