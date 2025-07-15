@@ -21,4 +21,5 @@ urlpatterns = [
     path("api/", include("apis.urls")),
     path("books/", include("books.urls")),
     path("todos/", include("todos.urls")),
+    path("posts/", include("posts.urls")),
 ]

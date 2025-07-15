@@ -4,7 +4,8 @@ from rest_framework import generics
 
 from books.models import Book
 from todos.models import Todo
-from .serializers import BookSerializer, TodoSerializer
+from posts.models import Post
+from .serializers import BookSerializer, TodoSerializer, PostSerializer
 
 # Create your views here.
 
@@ -21,3 +22,12 @@ class ListTodo(generics.ListAPIView):
 class DetailTodo(generics.RetrieveAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
+
+# posts app views
+class PostList(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer

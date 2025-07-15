@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'books',
     'apis',
     'todos',
+    'accounts',
+    'posts',
     'rest_framework',
     'corsheaders',
 ]
@@ -69,6 +71,8 @@ CORS_ALLOWED_ORIGINS = (
 )
 
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+
+AUTH_USER_MODEL = "accounts.CustomUser"
 
 ROOT_URLCONF = 'django_for_apis.urls'
 
