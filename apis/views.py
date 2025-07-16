@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from rest_framework import generics, permissions
+from rest_framework import generics
 
 from books.models import Book
 from todos.models import Todo
@@ -11,7 +11,7 @@ from .permissions import IsAuthorOrReadOnly
 # Create your views here.
 
 # books app views
-class BookAPIView(generics.ListAPIView):
+class BookAPIView(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
@@ -25,7 +25,7 @@ class DetailTodo(generics.RetrieveAPIView):
     serializer_class = TodoSerializer
 
 # posts app views
-class PostList(generics.ListAPIView):
+class PostList(generics.ListCreateAPIView):
     permission_classes = (IsAuthorOrReadOnly,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
