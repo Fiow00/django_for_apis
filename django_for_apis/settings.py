@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -66,29 +67,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
-REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticated",
-    ],
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
-    ]
-}
-
-CORS_ALLOWED_ORIGINS = (
-    "http://localhost:3000",
-    "http://localhost:8000",
-)
-
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
-
-AUTH_USER_MODEL = "accounts.CustomUser"
-
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
-SITE_ID = 1
 
 ROOT_URLCONF = 'django_for_apis.urls'
 
@@ -163,3 +141,33 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Django for APIs",
+    "DESCRIPTION": "collection of small apps to learn about Django rest framework",
+    "VERSION": "1.0.0",
+}
+
+CORS_ALLOWED_ORIGINS = (
+    "http://localhost:3000",
+    "http://localhost:8000",
+)
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+
+AUTH_USER_MODEL = "accounts.CustomUser"
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+SITE_ID = 1
